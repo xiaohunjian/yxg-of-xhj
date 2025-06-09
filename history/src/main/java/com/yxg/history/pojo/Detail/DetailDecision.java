@@ -1,0 +1,14 @@
+package com.yxg.history.pojo.Detail;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+import java.util.List;
+
+//存放DetailReturn中决策信息
+@AllArgsConstructor
+@Data
+public class DetailDecision{
+    private String title;
+    private List<Section> sections;
+}

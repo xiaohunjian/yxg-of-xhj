@@ -54,6 +54,7 @@ public class PreServiceImpl implements PreService {
                 String[] split = s.split("：");
                 list.add(split[0]);
                 list1.add(split[1]);
+
             }else if(line.contains("///")){
                 sb.append(line);
                 sb.append("\n");
