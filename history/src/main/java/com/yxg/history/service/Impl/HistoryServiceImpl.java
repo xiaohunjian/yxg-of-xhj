@@ -58,6 +58,7 @@ public class HistoryServiceImpl implements HistoryService {
         return new Result(200,"success",dr);
     }
 
+    //处理文本数据方法
     public List<DetailMap> dataHandle(String string){
         List<DetailMap> list = new ArrayList<>();
         String[] strings = string.split("\n");
@@ -79,10 +80,35 @@ public class HistoryServiceImpl implements HistoryService {
         fd.quarter = dataHandle(strings[3]);
         return fd;
     }
-
+    //处理决策数据方法
     public DetailDecisionData decisionHandle (String string){
-
-        return null;
+        DetailDecisionData ddd = new DetailDecisionData();
+        String[] strings = string.split("///");
+        ddd.first = decisionHandleLow(strings[0]);
+        ddd.second = decisionHandleLow(strings[1]);
+        ddd.third = decisionHandleLow(strings[2]);
+        return ddd;
+    }
+    //处理单种决策建议
+    public DetailDecision decisionHandleLow(String string){
+        DetailDecision dd = new DetailDecision();
+        String[] strs = string.split("\n");
+        dd.setTitle(strs[2]);
+        String[] strs1 = string.split("\n\n");
+        List<Section> sections = new ArrayList<>();
+        for(int i = 1;i<strs1.length-1;i++){
+            String head;
+            String[] str2 = strs1[i].split("\n");
+            head = str2[(i==1)?1:0];
+            StringBuffer sb = new StringBuffer();
+            for(int j = (i==1)?2:1;j<str2.length;j++){
+                sb.append(str2[j]);
+                sb.append("\n");
+            }
+            sections.add(new Section(head,sb.toString()));
+        }
+        dd.setSections(sections);
+        return dd;
     }
 
 

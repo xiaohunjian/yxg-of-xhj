@@ -12,5 +12,4 @@ import java.util.List;
 public class Section {
     String heading;
     String content;
-    List<String> item;
 }

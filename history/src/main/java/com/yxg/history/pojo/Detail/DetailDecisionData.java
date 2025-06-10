@@ -10,7 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class DetailDecisionData{
-    public List<DetailDecision> first;
-    public List<DetailDecision> second;
-    public List<DetailDecision> third;
+    public DetailDecision first;
+    public DetailDecision second;
+    public DetailDecision third;
 }
