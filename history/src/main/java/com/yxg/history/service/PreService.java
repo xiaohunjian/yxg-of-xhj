@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.nio.file.Path;
 
 public interface PreService {
-    Result prediction(String time, String name, Path uploadPath, String type,String filename);
+    Result prediction(String time, String name, Path uploadPath, String type,String filename) throws IOException;
 
-    Result getAdv(int id, String time,int times,String name) throws IOException;
 }

@@ -1,6 +1,5 @@
 package com.yxg.history.controller;
 
-import com.yxg.history.pojo.AdvRequest;
 import com.yxg.history.pojo.PreRequest;
 import com.yxg.history.pojo.Result;
 import com.yxg.history.service.PreService;
@@ -42,20 +41,8 @@ public class PreController {
             Files.createDirectories(uploadPath);
             Path filePath = uploadPath.resolve("pre.csv");
             file.transferTo(filePath);
+            return preService.prediction(time, name, uploadPath,preRequest.getPreRequestLow().getType(),preRequest.getPreRequestLow().getFileName());
         } catch (IOException e) {
-            e.printStackTrace();
-            return new Result(400, "error", null);
-        }
-        return preService.prediction(time, name, uploadPath,preRequest.getPreRequestLow().getType(),preRequest.getPreRequestLow().getFileName());
-    }
-
-    @PostMapping("/getAdv")
-    public Result getAdv(@RequestBody AdvRequest advRequest, HttpServletRequest request) {
-        String name = request.getAttribute("name").toString();
-        int id = (int) request.getAttribute("id");
-        try{
-            return preService.getAdv(id,advRequest.getTime(),advRequest.getTimes(),name);
-        }catch (Exception e){
             e.printStackTrace();
             return new Result(400, "error", null);
         }
