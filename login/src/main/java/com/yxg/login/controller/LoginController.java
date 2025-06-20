@@ -36,6 +36,9 @@ public class LoginController {
 
     @PostMapping("/register")
     public  Result register(@RequestBody User user){
+        if(user.getName()==null||user.getPassword()==null){
+            return new Result(400,"Fail to register","用户名和密码不能为空");
+        }
         return loginService.register(user);
     }
 

@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>预测与决策结果-太阳能</title>
+    <link rel="stylesheet" href="css/show.css">
+</head>
+
+<body>
+    <!-- 头部的盒子 -->
+    <header>
+        <div class="back"><button class="backbtn">返回</button></div>
+        <h1>预测与决策结果</h1>
+        <div class="showTime"></div>
+        <script>
+            var t = null;
+            t = setTimeout(time, 1000)
+            function time() {
+                clearTimeout(t)
+                dt = new Date()
+                var y = dt.getFullYear()
+                var mt = dt.getMonth() + 1
+                var day = dt.getDate()
+                var h = dt.getHours()
+                var m = dt.getMinutes()
+                var s = dt.getSeconds()
+                document.querySelector(".showTime").innerHTML = '当前时间：' + y + "年" + mt + "月" + day + "日" + h + "时" + m + "分" + s + "秒"
+                t = setTimeout(time, 1000)
+            }
+        </script>
+    </header>
+
+    <!-- 页面主体部分 -->
+    <section class="mainbox">
+        <div class="column">
+            <div class="panel line1">
+                <h2>总太阳能辐射度（MW）</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+            <div class="panel line2">
+                <h2>空气温度（℃）</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+            <div class="panel pie1">
+                <h2>空气相对湿度（%）</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+        </div>
+        <div class="column">
+            <!-- no模块制作 -->
+            <div class="no">
+                <button class="btn original" data-value="original">原始数据</button>
+                <button class="btn forecast" data-value="forecast">预测结果</button>
+                <button class="btn decision" data-value="decision">决策结果</button>
+            </div>
+
+            <!-- 地图模块 -->
+            <div class="map">
+                <div class="map1"></div>
+                <div class="map2"></div>
+                <div class="map3"></div>
+                <div class="chart"></div>
+                <div class="deciTable">
+                    <div class="first-table">
+                        <table>
+                            <caption>决策一</caption>
+                            <thead>
+                                <tr>
+                                    <th>评价维度</th>
+                                    <th>评级</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="second-table">
+                        <table>
+                            <caption>决策二</caption>
+                            <thead>
+                                <tr>
+                                    <th>评价维度</th>
+                                    <th>评级</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="third-table">
+                        <table>
+                            <caption>决策三</caption>
+                            <thead>
+                                <tr>
+                                    <th>评价维度</th>
+                                    <th>评级</th>
+                                    <th>说明</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="table-footer"></div>
+                </div>
+            </div>
+        </div>
+        <div class="column">
+            <div class="panel line3">
+                <h2>直射幅照度（MW）</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+            <div class="panel line4">
+                <h2>原始数据输出功率（MW）</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+            <div class="panel line5">
+                <h2>预测数据输出功率（MW）</h2>
+                <div class="chart"></div>
+                <div class="panel-footer"></div>
+            </div>
+        </div>
+
+        <!-- 文本展示界面 -->
+        <div class="modal-overlay" id="modalOverlay">
+            <!-- 原始数据 -->
+            <div class="modal-content" id="originalContent">
+                <div class="left-li">
+                    <h3>原始数据</h3>
+                </div>
+                <div class="right-content">
+                    <table>
+                        <tr>
+                            <th>预测指标</th>
+                            <th>数值</th>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 预测结果块 -->
+            <div class="modal-content" id="forecastContent">
+                <div class="left-li">
+                    <h3>预测时段</h3>
+                    <ul>
+                        <li class="day-btn"><a href="javascript:;">未来一日</a></li>
+                        <li class="week-btn"><a href="javascript:;">未来一周</a></li>
+                        <li class="month-btn"><a href="javascript:;">未来一月</a></li>
+                        <li class="quarter-btn"><a href="javascript:;">未来一季度</a></li>
+                    </ul>
+                </div>
+                <div class="right-content">
+                    <div class="day">
+                        <table>
+                            <tr>
+                                <th>预测指标</th>
+                                <th>数值</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="week">
+                        <table>
+                            <tr>
+                                <th>预测指标</th>
+                                <th>数值</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="month">
+                        <table>
+                            <tr>
+                                <th>预测指标</th>
+                                <th>数值</th>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="quarter">
+                        <table>
+                            <tr>
+                                <th>预测指标</th>
+                                <th>数值</th>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 决策结果块 -->
+            <div class="modal-content" id="decisionContent">
+                <div class="left-li">
+                    <h3>决策</h3>
+                    <ul>
+                        <li class="first-btn"><a href="javascript:;">决策一</a></li>
+                        <li class="second-btn"><a href="javascript:;">决策二</a></li>
+                        <li class="third-btn"><a href="javascript:;">决策三</a></li>
+                    </ul>
+                </div>
+                <div class="right-content">
+                    <div class="first">
+                    </div>
+                    <div class="second">
+                    </div>
+                    <div class="third">
+                    </div>
+                </div>
+            </div>
+
+            <button class="close">×</button>
+        </div>
+    </section>
+
+
+
+    <script src="js/flexible.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script src="js/jquery.js"></script>
+    <script src="js/his-solar.js"></script>
+</body>
+
+</html>

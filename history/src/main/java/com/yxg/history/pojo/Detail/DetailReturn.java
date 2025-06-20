@@ -21,5 +21,7 @@ public class DetailReturn {
     public Object pieChart;
     //线型图信息
     public Object lineChart;
-}
+    //星级信息
+    public StarData starData;
+ }
 

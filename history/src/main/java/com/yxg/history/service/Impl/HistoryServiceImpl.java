@@ -23,8 +23,8 @@ public class HistoryServiceImpl implements HistoryService {
     private HistoryMapper historyMapper;
 
     @Override
-    public Result hist(int id,int page) {
-        List<History> hist = historyMapper.selectByPage(id,page);
+    public Result hist(int id) {
+        List<History> hist = historyMapper.selectByPage(id);
         List<HistoryPre> historyPre = new ArrayList<>();
         for (History history : hist) {
             historyPre.add(new HistoryPre(history.getTime(),history.getType(),history.getFileName()));
@@ -55,6 +55,7 @@ public class HistoryServiceImpl implements HistoryService {
         ChartData chartData = data.getData();
         dr.setPieChart(chartData.getPieChart());
         dr.setLineChart(chartData.getLineChart());
+        dr.setStarData(starHandle(list[2]));
         return new Result(200,"success",dr);
     }
 
@@ -96,7 +97,7 @@ public class HistoryServiceImpl implements HistoryService {
         dd.setTitle(strs[2]);
         String[] strs1 = string.split("\n\n");
         List<Section> sections = new ArrayList<>();
-        for(int i = 1;i<strs1.length-1;i++){
+        for(int i = 1;i<strs1.length-2;i++){
             String head;
             String[] str2 = strs1[i].split("\n");
             head = str2[(i==1)?1:0];
@@ -110,6 +111,32 @@ public class HistoryServiceImpl implements HistoryService {
         dd.setSections(sections);
         return dd;
     }
-
-
+    //处理星级数据
+    public StarData starHandle(String string){
+        StarData sd = new StarData();
+        String[] strings = string.split("///");
+        sd.setFirst(starHandleLow(strings[0]));
+        sd.setSecond(starHandleLow(strings[1]));
+        sd.setThird(starHandleLow(strings[2]));
+        return sd;
+    }
+    //处理单个建议中星级
+    public List<DetailStar> starHandleLow(String string){
+        List<DetailStar> list = new ArrayList<>();
+        String[] strings = string.split("\n");
+        int i = 0;
+        while(!strings[i].equals("六、综合评估  ")){
+            i++;
+        }
+        for(int j = i+1;j<=i+4;j++){
+            DetailStar ds = new DetailStar();
+            String string1 = strings[j];
+            ds.setScore(string1.toCharArray()[1]-'0');
+            String[] strings1 = string1.split("：");
+            ds.setBasis(strings1[1]);
+            ds.setDimension(strings1[0].split("\\*")[2]);
+            list.add(ds);
+        }
+        return list;
+    }
 }

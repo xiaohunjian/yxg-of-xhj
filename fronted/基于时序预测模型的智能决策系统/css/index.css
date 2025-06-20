@@ -1,0 +1,454 @@
+/* 基础重置和字体设置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot?q7lm7m');
+    src: url('../fonts/icomoon.eot?q7lm7m#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?q7lm7m') format('truetype'),
+        url('../fonts/icomoon.woff?q7lm7m') format('woff'),
+        url('../fonts/icomoon.svg?q7lm7m#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+/* 主色调定义 */
+:root {
+    --primary-dark: #1a2a3a;
+    --primary: #2c3e50;
+    --primary-light: #3d566e;
+    --accent: #4ecdc4;
+    --accent-dark: #3aa8a0;
+    --text-primary: #ecf0f1;
+    --text-secondary: #bdc3c7;
+    --background: #121e26;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --error: #e74c3c;
+}
+
+/* :root {
+    --primary-dark: #0a1a2a;
+    --primary: #1c2e40;
+    --primary-light: #2d4a6e;
+    --accent: #02a6b5;
+    --accent-dark: #018895;
+    --text-primary: #e0f0f7;
+    --text-secondary: #a8c0d0;
+    --background: #0e1621;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --success: #2ecc71;
+    --warning: #f39c12;
+    --error: #e74c3c;
+} */
+
+body {
+    background-color: var(--background);
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.hidden-history {
+    position: absolute;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--primary-dark);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 2px 0 15px rgba(0, 0, 0, 0.2);
+    z-index: 10;
+}
+
+.hidden-history h2 {
+    padding: 20px;
+    cursor: default;
+    border-bottom: 1px solid var(--primary-light);
+    color: var(--accent);
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+.hidden-history h2::before {
+    font-family: 'icomoon';
+    content: '\e91b';
+    margin-right: 10px;
+    color: var(--accent);
+}
+
+.hidden-history ul {
+    list-style-type: none;
+    margin: 20px 10px 0 15px;
+    padding-top: 5px;
+    max-height: calc(100vh - 180px);
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-light) var(--primary-dark);
+}
+
+.hidden-history ul::-webkit-scrollbar {
+    width: 6px;
+}
+
+.hidden-history ul::-webkit-scrollbar-thumb {
+    background-color: var(--primary-light);
+    border-radius: 3px;
+}
+
+.hidden-history ul li {
+    padding: 12px 15px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: all 0.2s ease;
+}
+
+.hidden-history ul li:hover {
+    background-color: rgba(74, 137, 173, 0.2);
+    transform: translateY(-2px);
+}
+
+.hidden-history ul li a {
+    text-decoration: none;
+    color: var(--text-primary);
+    display: block;
+}
+
+.hidden-history ul li a strong {
+    display: block;
+    font-weight: 500;
+    margin-bottom: 4px;
+    color: var(--accent);
+}
+
+.hidden-history ul li a span {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    display: block;
+    margin-bottom: 2px;
+}
+
+.hidden-history ul li a small {
+    font-size: 0.75em;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+/* 用户信息区域 */
+.hidden-history .userinfo {
+    position: absolute;
+    bottom: 0;
+    width: calc(100% - 30px);
+    height: 70px;
+    margin: 15px;
+    padding: 0 15px;
+    font-size: 18px;
+    background-color: var(--primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    cursor: default;
+}
+
+.hidden-history .userinfo .user {
+    font-weight: 500;
+    color: var(--accent);
+}
+
+.hidden-history .userinfo .login {
+    font-size: 16px;
+}
+
+.hidden-history .userinfo .login div {
+    padding: 8px 12px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.hidden-history .userinfo .login .gologin {
+    background-color: var(--accent);
+    color: var(--primary-dark);
+    display: none;
+}
+
+.hidden-history .userinfo .login .gologin:hover {
+    background-color: var(--accent-dark);
+    transform: translateY(-2px);
+}
+
+.hidden-history .userinfo .login .gologin a {
+    text-decoration: none;
+    color: #333;
+}
+
+.hidden-history .userinfo .login .gologin a span {
+    font-family: 'icomoon';
+    content: '\e940';
+}
+
+.hidden-history .userinfo .login .logout {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: var(--error);
+    display: none;
+}
+
+.hidden-history .userinfo .login .logout span {
+    font-family: 'icomoon';
+    content: '\e941';
+}
+
+.hidden-history .userinfo .login .logout:hover {
+    background-color: rgba(231, 76, 60, 0.3);
+    transform: translateY(-2px);
+}
+
+.hidden-history .userinfo .login .active {
+    display: block;
+}
+
+/* 右侧主内容区 */
+.right-container {
+    position: relative;
+    flex: 1;
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--background) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.right-container .content {
+    position: relative;
+    background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    text-align: center;
+    padding: 50px 80px;
+    padding-bottom: 100px;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 800px;
+    width: 90%;
+}
+
+/* 按钮选项部分 */
+.choice {
+    text-align: center;
+    padding: 20px 0;
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.choice .btn {
+    min-width: 120px;
+    height: 45px;
+    border: none;
+    background-color: var(--primary);
+    color: var(--text-primary);
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 8px;
+    margin: 0 8px;
+    padding: 0 20px;
+    transition: all 0.3s ease;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.choice .btn:hover {
+    background-color: var(--accent);
+    color: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.choice .choiceActive {
+    background-color: var(--accent);
+    color: var(--primary-dark);
+    font-weight: 600;
+}
+
+/* 文件上传区域 */
+.upload-container {
+    background: rgba(26, 42, 58, 0.6);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+    text-align: center;
+    border: 1px dashed rgba(78, 205, 196, 0.3);
+    transition: all 0.3s ease;
+}
+
+.upload-container:hover {
+    border-color: var(--accent);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.upload-container .upload-box {
+    padding: 30px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.upload-container .upload-box p {
+    color: var(--text-primary);
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.upload-container .upload-box .beizhu {
+    font-size: 14px;
+    color: var(--text-secondary);
+    opacity: 0.8;
+}
+
+#file-input {
+    display: none;
+    /* 隐藏原生文件输入框 */
+}
+
+
+/* 文件列表样式 */
+.upload-container .file-list {
+    margin-top: 20px;
+    text-align: left;
+    cursor: default;
+}
+
+.upload-container .file-list h3 {
+    color: var(--accent);
+    margin-bottom: 15px;
+    font-weight: 500;
+}
+
+.upload-container .file-list ul {
+    list-style: none;
+}
+
+.upload-container .file-list li {
+    position: relative;
+    background: rgba(44, 62, 80, 0.5);
+    padding: 12px 15px;
+    margin-top: 10px;
+    border-radius: 8px;
+    border-left: 3px solid var(--accent);
+    transition: all 0.2s ease;
+}
+
+.upload-container .file-list li:hover {
+    background: rgba(44, 62, 80, 0.7);
+}
+
+.upload-container .file-list li .remove-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+    background-color: rgba(231, 76, 60, 0.2);
+    color: var(--error);
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+.upload-container .file-list li .remove-btn:hover {
+    background-color: var(--error);
+    color: white;
+}
+
+/* 按钮样式 */
+.content .submit {
+    position: absolute;
+    bottom: 20px;
+    right: 10px;
+    min-width: 160px;
+    height: 50px;
+    border: none;
+    background-color: var(--accent);
+    color: var(--primary-dark);
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 0 25px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.5px;
+}
+
+
+.content .submit:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.content .submit:disabled {
+    background-color: var(--primary-light);
+    color: var(--text-secondary);
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+.content .submit:disabled:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 切换按钮 */
+#toggle-button {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+    width: 40px;
+    height: 40px;
+    background-color: var(--accent);
+    color: var(--primary-dark);
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 20;
+}
+
+#toggle-button:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+#toggle-button span {
+    font-family: 'icomoon';
+    font-size: 20px;
+}
+
+br {
+    height: 10px;
+}

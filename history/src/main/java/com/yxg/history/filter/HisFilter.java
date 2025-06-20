@@ -25,7 +25,7 @@ public class HisFilter implements Filter {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
         String url = req.getRequestURI().toString();
-        String jwt = req.getHeader("token");
+        String jwt = req.getHeader("Token");
         if(jwt==null){
             System.out.println("未检测到令牌");
             Result res = new Result(400,"please login","");

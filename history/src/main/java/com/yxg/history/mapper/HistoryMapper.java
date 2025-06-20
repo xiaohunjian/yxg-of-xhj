@@ -9,8 +9,8 @@ import java.util.List;
 @Mapper
 public interface HistoryMapper {
 
-    @Select("select * from hist where id = #{id} order by time desc limit #{page},5")
-    List<History> selectByPage(int id, int page);
+    @Select("select * from hist where id = #{id} order by time desc ")
+    List<History> selectByPage(int id);
 
     @Select("select * from hist where time = #{time} and type = #{type}")
     History selectByTime(String time, String type);

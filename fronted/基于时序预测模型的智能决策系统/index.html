@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智能决策系统</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 左侧一开始隐藏的历史记录部分 -->
+        <div class="hidden-history" id="history-list">
+            <h2>历史记录</h2>
+            <ul>
+                <li><a href="javascript:;">
+                        <strong>filename</strong>
+                        <span>elec</span>
+                        <small>2025.5.30</small>
+                    </a></li>
+                <li><a href="javascript:;">
+                        <strong>filename</strong>
+                        <span>elec</span>
+                        <small>2025.5.30</small>
+                    </a></li>
+                <li><a href="javascript:;">
+                        <strong>filename</strong>
+                        <span>elec</span>
+                        <small>2025.5.30</small>
+                    </a></li>
+            </ul>
+            <div class="userinfo">
+                <div class="login">
+                    <div class="gologin"><a href="login.html"><span></span>登录</a></div>
+                    <div class="logout active"><span></span>退出登录</div>
+                </div>
+                <div class="user">用户未登录</div>
+            </div>
+        </div>
+
+        <!-- 右侧一开始居中的文件传输部分 -->
+        <div class="right-container" id="right-container">
+            <button id="toggle-button"><span></span></button>
+            <div class="content">
+                <div class="choice">
+                    选择预测方向：
+                    <button class="btn" data-value="elec">电力负荷</button>
+                    <button class="btn" data-value="wind">风能</button>
+                    <button class="btn" data-value="solar">太阳能</button>
+                </div>
+                <div class="upload-container">
+                    <div class="upload-box" id="upload-box">
+                        <p>将文件拖拽到这里，或点击上传</p>
+                        <br>
+                        <p class="beizhu">(支持的文件格式：.txt、.csv、.tsv、.xls、.xlxs)</p>
+                        <input type="file" id="file-input" accept=".txt,.csv,.tsv,.xls,.xlxs">
+                    </div>
+                    <div class="file-list" id="file-list">
+                        <h3>上传成功的文件：</h3>
+                        <ul></ul>
+                    </div>
+                </div>
+                <button class="submit" id="submit">生成预测报告</button>
+            </div>
+
+        </div>
+
+
+    </div>
+
+    <script src="js/index.js"></script>
+</body>
+
+</html>

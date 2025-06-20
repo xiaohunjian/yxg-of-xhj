@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>登录</title>
+    <link rel="stylesheet" href="css/login.css">
+</head>
+
+<body>
+    <div class="xtx-wrapper">
+        <div class="container">
+            <div class="xtx-card">
+                <h2>用户登录</h2>
+                <form class="xtx-form" id="login-form" autocomplete="off">
+                    <div data-prop="username" class="xtx-form-item">
+                        <div class="scale"> <span class="iconfont icon-zhanghao"></span>
+                            <input name="username" id="username" type="text" placeholder="设置用户名">
+                        </div>
+                        <span class="msg span1"></span>
+                    </div>
+                    <div data-prop="password" class="xtx-form-item">
+                        <div class="scale"><span class="iconfont icon-suo"></span>
+                            <input name="password" id="password" type="password" placeholder="请输入密码">
+                        </div>
+                        <span class="msg span2"></span>
+                    </div>
+                    <div class="xtx-form-item pl50">
+                        <input type="checkbox" class="checkbox" name="checkbox" id="checkbox">七天自动登录
+                    </div>
+                    <div class="xtx-form-item">
+                        <button class="submit">登录</button>
+                    </div>
+                    <div class="register">
+                        <a href="register.html">新用户注册</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/login.js"></script>
+</body>
+
+</html>

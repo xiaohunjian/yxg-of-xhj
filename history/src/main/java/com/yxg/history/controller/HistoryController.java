@@ -20,10 +20,11 @@ public class HistoryController {
     @Autowired
     private HistoryService historyService;
 
-    @GetMapping("/hist/{page}")
-    public Result hist(HttpServletRequest request,@PathVariable int page){
+
+    @GetMapping("/hist")
+    public Result histWithNoPage(HttpServletRequest request){
         int id = (int) request.getAttribute("id");
-        return historyService.hist(id,page-1);
+        return historyService.hist(id);
     }
 
     @PostMapping("/reHist")
