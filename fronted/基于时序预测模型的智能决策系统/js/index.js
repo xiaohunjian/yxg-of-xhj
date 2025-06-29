@@ -196,7 +196,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const token = localStorage.getItem('token')
 
         const headers = {
-            'Content-Type': 'application/json',
             ...options.headers
         }
 
@@ -293,10 +292,10 @@ document.addEventListener('DOMContentLoaded', () => {
             return
         }
 
-        // 检查大小 (这里保持5MB限制，可根据需要调整)
+        // 检查大小 (这里保持30MB限制，可根据需要调整)
         const maxSize = 30 * 1024 * 1024
         if (file.size > maxSize) {
-            alert('文件大小不能超过5MB')
+            alert('文件大小不能超过30MB')
             fileInput.value = ''
             return
         }
@@ -340,7 +339,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const formData = new FormData();
         formData.append('file', selectedFile);
-        formData.append('data', JSON.stringify(jsonData));
+        formData.append('data.type', jsonData.type);
+        formData.append('data.fileName', jsonData.fileName);
 
         try {
             submitButton.disabled = true;

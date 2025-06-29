@@ -1,14 +1,12 @@
 package com.yxg.history.controller;
 
 import com.yxg.history.pojo.PreRequest;
+import com.yxg.history.pojo.PreRequestLow;
 import com.yxg.history.pojo.Result;
 import com.yxg.history.service.PreService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpServletRequest;
@@ -27,11 +25,13 @@ public class PreController {
     private PreService preService;
 
     @PostMapping("/prediction")
-    public Result prediction(@RequestBody PreRequest preRequest, HttpServletRequest request) {
+    public Result prediction(HttpServletRequest request,@ModelAttribute PreRequest preRequest) throws IOException {
         String name = request.getAttribute("name").toString();
         String time;
-        Path uploadPath;
         MultipartFile file = preRequest.getFile();
+        String fileName = preRequest.getData().getFileName();
+        String type = preRequest.getData().getType();
+        Path uploadPath;
         try {
             String basePath = "C:\\Users\\yijian\\Desktop\\project\\yxg\\user";
             LocalDateTime now = LocalDateTime.now();
@@ -41,7 +41,7 @@ public class PreController {
             Files.createDirectories(uploadPath);
             Path filePath = uploadPath.resolve("pre.csv");
             file.transferTo(filePath);
-            return preService.prediction(time, name, uploadPath,preRequest.getPreRequestLow().getType(),preRequest.getPreRequestLow().getFileName());
+            return preService.prediction(time, name, uploadPath,type,fileName);
         } catch (IOException e) {
             e.printStackTrace();
             return new Result(400, "error", null);

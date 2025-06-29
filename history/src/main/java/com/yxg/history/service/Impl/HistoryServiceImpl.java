@@ -125,7 +125,7 @@ public class HistoryServiceImpl implements HistoryService {
         List<DetailStar> list = new ArrayList<>();
         String[] strings = string.split("\n");
         int i = 0;
-        while(!strings[i].equals("六、综合评估  ")){
+        while(!strings[i].contains("六、综合评估")){
             i++;
         }
         for(int j = i+1;j<=i+4;j++){

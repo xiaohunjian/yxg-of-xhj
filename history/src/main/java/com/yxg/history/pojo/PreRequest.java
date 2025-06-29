@@ -9,6 +9,6 @@ import org.springframework.web.multipart.MultipartFile;
 @AllArgsConstructor
 @NoArgsConstructor
 public class PreRequest {
-    private PreRequestLow preRequestLow;
+    private PreRequestLow data;
     private MultipartFile file;
 }//预测请求体

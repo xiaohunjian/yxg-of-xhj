@@ -17,7 +17,9 @@ li {
 
 body {
     background: url(../images/bg.jpg) no-repeat top center;
+    background-size: cover;
     line-height: 1.15;
+    width: 24rem;
 }
 
 /* 头部 */
@@ -73,8 +75,8 @@ header {
 /* 页面主体盒子 */
 .mainbox {
     display: flex;
-    min-width: 1024px;
-    max-width: 1920px;
+    min-width: 24rem;
+    max-width: 24rem;
     margin: 0 auto;
     padding: .125rem .125rem 0;
 
@@ -100,10 +102,10 @@ header {
             position: absolute;
             top: 0;
             left: 0;
-            width: 10px;
-            height: 10px;
-            border-top: 2px solid #02a6b5;
-            border-left: 2px solid #02a6b5;
+            width: .125rem;
+            height: .125rem;
+            border-top: .025rem solid #02a6b5;
+            border-left: .025rem solid #02a6b5;
             content: "";
         }
 
@@ -111,10 +113,10 @@ header {
             position: absolute;
             top: 0;
             right: 0;
-            width: 10px;
-            height: 10px;
-            border-top: 2px solid #02a6b5;
-            border-right: 2px solid #02a6b5;
+            width: .125rem;
+            height: .125rem;
+            border-top: .025rem solid #02a6b5;
+            border-right: .025rem solid #02a6b5;
             content: "";
         }
 
@@ -128,10 +130,10 @@ header {
                 position: absolute;
                 bottom: 0;
                 left: 0;
-                width: 10px;
-                height: 10px;
-                border-bottom: 2px solid #02a6b5;
-                border-left: 2px solid #02a6b5;
+                width: .125rem;
+                height: .125rem;
+                border-bottom: .025rem solid #02a6b5;
+                border-left: .025rem solid #02a6b5;
                 content: "";
             }
 
@@ -139,10 +141,10 @@ header {
                 position: absolute;
                 bottom: 0;
                 right: 0;
-                width: 10px;
-                height: 10px;
-                border-bottom: 2px solid #02a6b5;
-                border-right: 2px solid #02a6b5;
+                width: .125rem;
+                height: .125rem;
+                border-bottom: .025rem solid #02a6b5;
+                border-right: .025rem solid #02a6b5;
                 content: "";
             }
         }
@@ -152,7 +154,7 @@ header {
             line-height: 0.6rem;
             text-align: center;
             color: #fff;
-            font-size: 20px;
+            font-size: .25rem;
             font-weight: 400;
 
             a {
@@ -186,8 +188,8 @@ header {
 
     .modal-content {
         background-color: white;
-        padding: 20px;
-        border-radius: 5px;
+        padding: .25rem;
+        border-radius: .0625rem;
         width: 15rem;
         height: 10rem;
         overflow-y: auto;
@@ -202,9 +204,9 @@ header {
 
     .close {
         position: absolute;
-        top: 20px;
-        right: 20px;
-        font-size: 24px;
+        top: .25rem;
+        right: .25rem;
+        font-size: .3rem;
         cursor: pointer;
         background: none;
         border: none;
@@ -222,7 +224,7 @@ header {
         float: left;
         padding-left: .3rem;
         min-height: 9.3rem;
-        border-left: 2px solid black;
+        border-left: .025rem solid black;
     }
 
     h3 {
@@ -258,7 +260,7 @@ header {
         width: 1.875rem;
         height: .5rem;
         line-height: .5rem;
-        font-size: 20px;
+        font-size: .25rem;
     }
 
     .li-active {
@@ -269,14 +271,14 @@ header {
 
     table {
         width: 100%;
-        font-size: 20px;
+        font-size: .25rem;
         border-collapse: collapse;
     }
 
     th,
     td {
-        border: 1px solid #ddd;
-        padding: 8px;
+        border: .0125rem solid #ddd;
+        padding: .1rem;
         text-align: left;
     }
 
@@ -296,14 +298,14 @@ header {
 
     p {
         width: 11rem;
-        font-size: 16px;
-        margin-bottom: 10px;
+        font-size: .2rem;
+        margin-bottom: .125rem;
         text-align: justify;
     }
 
     hr {
         border: none;
-        margin: 10px 0;
+        margin: .125rem 0;
     }
 }
 
@@ -336,7 +338,7 @@ header {
 
     button {
         flex: 1;
-        margin: 15px;
+        margin: .1875rem;
         height: .75rem;
         line-height: .75rem;
         text-align: center;
@@ -435,10 +437,10 @@ header {
             position: absolute;
             top: 0;
             left: 0;
-            width: 10px;
-            height: 10px;
-            border-top: 2px solid #02a6b5;
-            border-left: 2px solid #02a6b5;
+            width: .125rem;
+            height: .125rem;
+            border-top: .025rem solid #02a6b5;
+            border-left: .025rem solid #02a6b5;
             content: "";
         }
 
@@ -446,10 +448,10 @@ header {
             position: absolute;
             top: 0;
             right: 0;
-            width: 10px;
-            height: 10px;
-            border-top: 2px solid #02a6b5;
-            border-right: 2px solid #02a6b5;
+            width: .125rem;
+            height: .125rem;
+            border-top: .025rem solid #02a6b5;
+            border-right: .025rem solid #02a6b5;
             content: "";
         }
 
@@ -463,10 +465,10 @@ header {
                 position: absolute;
                 bottom: 0;
                 left: 0;
-                width: 10px;
-                height: 10px;
-                border-bottom: 2px solid #02a6b5;
-                border-left: 2px solid #02a6b5;
+                width: .125rem;
+                height: .125rem;
+                border-bottom: .025rem solid #02a6b5;
+                border-left: .025rem solid #02a6b5;
                 content: "";
             }
 
@@ -474,24 +476,25 @@ header {
                 position: absolute;
                 bottom: 0;
                 right: 0;
-                width: 10px;
-                height: 10px;
-                border-bottom: 2px solid #02a6b5;
-                border-right: 2px solid #02a6b5;
+                width: .125rem;
+                height: .125rem;
+                border-bottom: .025rem solid #02a6b5;
+                border-right: .025rem solid #02a6b5;
                 content: "";
             }
         }
 
         table {
             flex: 1;
-            margin: 10px auto;
+            margin: .125rem auto;
             width: 9rem;
             background-color: rgba(26, 42, 58, 0.8);
             color: #ecf0f1;
-            border: 1px solid rgba(2, 166, 181, 0.3);
-            font-size: 14px;
+            border: .0125rem solid rgba(2, 166, 181, 0.3);
+            font-size: .175rem;
             transition: all 0.2s ease;
             transform-origin: center;
+            table-layout: fixed
         }
 
         table:hover {
@@ -500,7 +503,7 @@ header {
 
         th,
         td {
-            padding: 5px;
+            padding: .0625rem;
             text-align: left;
         }
 
@@ -512,7 +515,7 @@ header {
         }
 
         td {
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            border: .0125rem solid rgba(255, 255, 255, 0.1);
         }
 
         tr:nth-child(even) {
@@ -529,7 +532,7 @@ header {
 
         .star {
             color: #FFD700;
-            font-size: 18px;
+            font-size: .225rem;
         }
 
         .rating {
@@ -539,8 +542,29 @@ header {
 
         caption {
             color: #4ecdc4;
-            font-size: 18px;
-            padding: 2px;
+            font-size: .225rem;
+            padding: .025rem;
+            text-align: center;
+        }
+
+        th:nth-child(1),
+        td:nth-child(1) {
+            width: 1.25rem;
+            text-align: center;
+        }
+
+        th:nth-child(2),
+        td:nth-child(2) {
+            width: 1.75rem;
+            text-align: center;
+        }
+
+        th:nth-child(3),
+        td:nth-child(3) {
+            word-break: break-word;
+        }
+
+        th:nth-child(3) {
             text-align: center;
         }
     }

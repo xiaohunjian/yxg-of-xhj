@@ -6,9 +6,7 @@ import com.yxg.history.pojo.Result;
 import com.yxg.history.service.HistoryService;
 import com.yxg.history.service.PreService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.*;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
@@ -28,15 +26,17 @@ public class PreServiceImpl implements PreService {
         String add = "C:\\Users\\yijian\\Desktop\\project\\yxg\\user\\"+name+"\\"+time;
         int id = preMapper.findByName(name);
         History history = new History(id,time,add,type,filename);
-        preMapper.addFile(history);
         RestTemplate restTemplate = new RestTemplate();;
         String url = "http://localhost:5000/predict";
-        String requestBody = "{\"address\":["+
-                add+"\\pre.csv"+","+
-                add+"\\bar.json"+","+
-                add+"\\res.txt]," +"\n"+
-                "\"category\":"+type+"}";
-        HttpEntity<String > requestEntity = new HttpEntity<>(requestBody);
+        String requestBody = "{\"address\":[\""+
+                add+"\\pre.csv\""+",\""+
+                add+"\\bar.json\""+",\""+
+                add+"\\res.txt\"]," +"\n"+
+                "\"category\":"+"\""+type+"\""+"}";
+        requestBody = requestBody.replace("\\","\\\\");
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        HttpEntity<String > requestEntity = new HttpEntity<>(requestBody,headers);
         try{
             ResponseEntity<Result> response = restTemplate.exchange(
                     url,
@@ -44,15 +44,12 @@ public class PreServiceImpl implements PreService {
                     requestEntity,
                     Result.class
             );
-            Result result = response.getBody();
-            if (response.getBody().getCode()!=200){
-                return new Result(400,"fail",null);
-            }
         }catch (Exception e){
             e.printStackTrace();
             return new Result(400,"fail",null);
         }
         //此处调用接口进行分析，存储文件并返回结果
+        preMapper.addFile(history);
         return historyService.reHist(time,type);
     }
 }

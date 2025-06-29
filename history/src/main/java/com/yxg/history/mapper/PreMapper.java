@@ -11,7 +11,7 @@ public interface PreMapper {
     @Select("select id from user where name = #{name}")
     int findByName(String name);
 
-    @Insert("insert into hist(id, time, addr, type,fileName ) VALUES (#{id},#{time},#{add},#{type},#{fileName})")
+    @Insert("insert into hist(id, time, addr, type,fileName ) VALUES (#{id},#{time},#{addr},#{type},#{fileName})")
     void addFile(History history);
 
     @Select("select addr from hist where id = #{id} and time = #{time}")

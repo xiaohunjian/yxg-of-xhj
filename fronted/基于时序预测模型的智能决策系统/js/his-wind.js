@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const predictionData = JSON.parse(storedData)
+    console.log(predictionData)
     const chartData = predictionData.detailData
     const pieChartData = chartData.pieChart
     const lineChartData = chartData.lineChart;
@@ -864,14 +865,18 @@ document.addEventListener('DOMContentLoaded', function () {
             if (!tableContainer || !starData[tableKey]) return
 
             const table = tableContainer.querySelector('table')
+            const caption = table.querySelector('caption')
             const tbody = table.querySelector('tbody')
+            const title = decisionData[tableKey]?.title.replace(/：/g, '——') || `决策${tableKey === 'first' ? '一' : tableKey === 'second' ? '二' : '三'}`
+            caption.textContent = title
+
             tbody.innerHTML = ''
             // 使用模板字符串批量生成行
             starData[tableKey].forEach(item => {
                 tbody.innerHTML += `
             <tr>
                 <td>${item.dimension || ''}</td>
-                <td class="rating star">${generateStars(item.score || 0)}</td>
+               <td><span class="star">${generateStars(item.score || 0)}</span></td>
                 <td>${item.basis || ''}</td>
             </tr>
             `
